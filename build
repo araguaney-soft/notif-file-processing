@@ -1,0 +1,12 @@
+#!/bin/bash
+URL_REG='notifdevsa909090.azurecr.io'
+USER_REG='notifdevsa909090'
+PASS_REG='1dfueJt0eDsH/NJbXPtejqDxdYpdSDAw'
+NAME_SVC=`cat package.json | jq -r .name`
+VERSION_SVC=`cat package.json | jq -r .version`
+#BUILD=`echo -0`
+
+docker login $URL_REG -u $USER_REG -p $PASS_REG
+
+docker build --tag $URL_REG/$NAME_SVC:$VERSION_SVC$BUILD .
+docker push $URL_REG/$NAME_SVC:$VERSION_SVC$BUILD
