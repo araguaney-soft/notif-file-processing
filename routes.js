@@ -20,7 +20,7 @@ router.get('/dapr/subscribe', (req, res) => {
          .catch(function (error) {
             // handle error
             console.log(error);
-          });*?
+          });*/
 
 });
 
