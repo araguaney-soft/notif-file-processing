@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
+const config = require('./config.js');
 const subscribe = require('./routes.js');
 
 const app = express();
@@ -10,6 +10,5 @@ app.use(bodyParser.json({ type: 'application/*+json' }));
 app.use(bodyParser.json());
 
 app.use('/', subscribe);
-
-const port = 3000;
-app.listen(port, () => console.log(`Batch Processor listening on port ${port}!`));
+ 
+app.listen(config.PORT, () => console.log(`Batch Processor listening on port ${config.PORT}!`));
