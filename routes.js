@@ -24,6 +24,31 @@ router.get('/dapr/subscribe', (req, res) => {
 
 });
 
+router.get('/testhub', (req, res) => {
+
+    
+    for (let index = 0; index <1000; index++) {
+        
+        axios.get("http://localhost:3500/v1.0/publish/eventhubs-pubsub/notif1-eventhub-message", { "grettings": "hello world" } ,  { headers: {
+            "Content-Type": "application/json"
+        } })
+        .then(function (response) {
+            // handle success
+            console.log(response.data);
+        })
+         .catch(function (error) {
+            // handle error
+            console.log(error.errno);
+          });
+    }
+    console.log({
+        "status" : "ok"
+    })
+    res.json([{
+        "status" : "ok"
+    }]);
+});
+
 router.get('/healthz', (req, res) => {
     res.json({
         health: "ok"
